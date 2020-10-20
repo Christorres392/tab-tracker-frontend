@@ -1,26 +1,84 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import SignUp from './pages/SignUp'
+import Login from './pages/Login'
+import Home from './pages/Home'
+import Project from './pages/Project'
+import Issue from './pages/Issue'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import ProjectForm from './components/ProjectForm'
+
+import { Router, Switch, Route, Link, useHistory } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import Header from './components/Header';
+
+
+const history = createBrowserHistory();
+
+class App extends Component {
+
+  state ={
+    loggedInStatus: "LOGGED_OUT",
+    user: [],
+    project: [], 
+    issue: []
+  }
+
+
+  handleLogin = (data) => {
+    this.setState({loggedInStatus: "LOGGED_IN", user: data.user})
+  }
+
+  showProjectPage = (project) => {
+   this.setState({project: project})
+    history.push('/project')
+  }
+
+  showIssuePage = (issue) => {
+    this.setState({issue: issue})
+     history.push('/issue')
+   }
+
+
+  
+  render() { 
+    return ( 
+      
+      
+      <div>
+        
+        <Router history={history}>
+        <Header/>
+          <Switch>
+            
+            <Route exact path="/" render={props => (<Home {...props} showProjectPage={this.showProjectPage} currentUser={this.state.user}/>)}/>
+              
+             
+
+            <Route exact path='/login' render={props => (<Login {...props} handleLogin={this.handleLogin}/>)}/>
+
+            <Route exact path='/signup'>
+              <SignUp />
+            </Route>
+
+            <Route exact path='/project'>
+              <Project showIssuePage={this.showIssuePage} project={this.state.project}/>
+            </Route>
+
+            <Route exact path='/issue'>
+              <Issue issue={this.state.issue}/>
+            </Route>
+
+
+
+          </Switch>
+        </Router>
+        
+      </div>
+      
+     );
+  }
 }
-
+ 
 export default App;

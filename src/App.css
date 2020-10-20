@@ -1,3 +1,7 @@
+
+
+
+
 .App {
   text-align: center;
 }
@@ -35,4 +39,107 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.box{
+  display: none;
+  width: 100%;
+}
+
+.tiny-link:hover + .box,.box:hover{
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+
+.projects-column{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 300px;
+  height: 800px;
+  margin-left: 20px;
+  margin-top: 50px;
+  /* margin-bottom: auto; */
+  overflow-y: auto;
+  background-color: rgba(22, 22, 22, 0.5);
+  border: 3px outset #1C6EA4;
+  border-radius: 4px;
+  margin-bottom: 100px;
+  
+}
+
+.projects-column-container{
+  display: grid;
+ grid-template-columns: 1fr 5fr;
+
+  width: 100vw;
+}
+
+
+
+.homepage{
+ 
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  
+}
+
+.login-navbar{
+  color: blue;
+}
+
+.project-button{
+  display: inline-block;
+  margin-top: 100px !important;
+  
+
+}
+
+.project-card{
+  
+  border: 3px outset #1C6EA4;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 275px;
+  border-radius: 10px;
+  background-color: rgba(22, 22, 22, 0.7);
+}
+
+.issue-card{
+  color: white;
+  border: 3px outset #1C6EA4;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 275px;
+  border-radius: 10px;
+  background-color: rgba(22, 22, 22, 0.7);
+}
+
+.login{
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.login-form{
+  display: relative;
+  margin-top: 400px;
+}
+
+.project{
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.issue{
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
 }
