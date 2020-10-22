@@ -36,8 +36,12 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "4rem",
     },
     delete_icon: {
-        color: "red",
+        color: "rgba(128, 0, 0, 1)",
+        '&:hover': {
+            color: 'red',
+         }
     },
+    
 
 }));
 

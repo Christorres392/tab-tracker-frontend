@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EditIssueForm from '../components/EditIssueForm';
 import IssueForm from '../components/IssueForm'
 import IssuesContainer from '../containers/IssuesContainer';
 
@@ -8,7 +9,8 @@ const issuesURL = "http://localhost:3000/issues"
 class Project extends Component {
 
     state = {
-        issues: []
+        issues: [],
+        modalOpen: false,
     }
 
     componentDidMount() {
@@ -29,13 +31,38 @@ class Project extends Component {
         this.setState({ issues: [...this.state.issues, data] })
     }
 
+    deleteIssue = (issue) => {
+        this.setState({ issues: this.state.issues.filter(newIssue => newIssue.id !== issue.id) })
+        fetch(`http://localhost:3000/issues/${issue.id}`, {
+            method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("token")}`,
+                Accepts: 'application/json',
+                "Content-type": 'application/json'
+            }
+        })
+    }
+
+    editIssue = (e) => {
+        console.log("hello")
+        this.setState({modalOpen: !this.state.modalOpen})
+    }
+
+    
+
     render() {
         return (
+
             <div className="project" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/desktop_5.jpeg'})` }}>
                 <div>
-                    <h1>{this.props.project.project_name}</h1>
-                    <IssueForm project={this.props.project} newIssues={this.projectHandler} />
-                    <IssuesContainer showIssuePage={this.props.showIssuePage} issues={this.state.issues} />
+                    <div>
+                        <h1 className="project-name">{this.props.project.project_name}</h1>
+                    </div>
+                    <div>
+                        <IssueForm project={this.props.project}  modalOpen={this.state.modalOpen} newIssues={this.projectHandler} />
+                        <IssuesContainer deleteIssue={this.deleteIssue} editIssue={this.editIssue} showIssuePage={this.props.showIssuePage} issues={this.state.issues} />
+                        <EditIssueForm modalOpen={this.state.modalOpen} project={this.props.project}/>
+                    </div>
                 </div>
             </div>
         );

@@ -10,7 +10,7 @@ class ProjectForm extends Component {
     state = {
         project_name: "",
         user_id: this.props.userId,
-        modelOpen: false,
+        modalOpen: false,
         projects: []
     }
 

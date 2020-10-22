@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReferenceForm from '../components/ReferenceForm';
 import ReferencesContainer from '../containers/ReferencesContainer';
+import ReferenceUrlContainer from '../containers/ReferenceUrlContainer';
 
 const referencesURL = "http://localhost:3000/references"
 
@@ -34,6 +35,7 @@ fetchReferences = () => {
                 <h2>{this.props.issue.issue_name}</h2>
                 <ReferenceForm issue={this.props.issue} newReferences={this.referenceHandler}/>
                 <ReferencesContainer references={this.state.references}/>
+                <ReferenceUrlContainer references={this.state.references}/>
             </div>
          );
     }

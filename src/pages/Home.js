@@ -33,6 +33,18 @@ fetchProjects = () => {
     .then(projects => this.setState({projects: projects.filter(project => project.user_id == this.props.currentUser.id)}))
 }
 
+deleteProject = (project) => {
+    this.setState({ projects: this.state.projects.filter(newProject => newProject.id !== project.id) })
+    fetch(`http://localhost:3000/projects/${project.id}`, {
+      method: "DELETE", 
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("token")}`,
+        Accepts: 'application/json',
+        "Content-type": 'application/json'
+      }
+    })
+}
+
 
 
     

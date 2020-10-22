@@ -72,6 +72,7 @@ class Login extends Component {
                         </Grid.Column>
                     </Grid>
                 </div>
+                    <h1 className="greeting">Welcome To Tab-Tracker</h1>
             </div>
         );
     }

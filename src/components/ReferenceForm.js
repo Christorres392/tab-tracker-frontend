@@ -60,7 +60,7 @@ class ReferenceForm extends Component {
     render() { 
         return ( 
             <Modal
-            trigger={<Button onClick={this.handleOpen}>+ Reference</Button>}
+            trigger={<Button className="add-reference-button" onClick={this.handleOpen}>+ Reference</Button>}
             open={this.state.modalOpen}
             onClose={this.handleClose}
             basic

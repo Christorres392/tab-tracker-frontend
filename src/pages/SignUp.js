@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { Form, Grid, Button, Header as LoginHeader, Segment } from 'semantic-ui-react'
 
 class SignUp extends Component {
 
     state = {
         name: "",
-            password: "",
-            email: "",
-            created: false
+        password: "",
+        email: "",
+        created: false
     }
-    
+
     handleChange = (event) => {
         const { name, value } = event.target
 
@@ -50,20 +51,29 @@ class SignUp extends Component {
 
 
 
-    render() { 
-        return ( 
-            <div id="signup">
+    render() {
+        return (
+            <div id="signup" className="login" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/desktop_2.jpeg'})` }}>
                 {this.state.created ? <Redirect to="/login" /> : <div>
-                    <form onSubmit={this.createUser}>
-                        <input type="text" name="email" placeholder="Email" onChange={this.handleChange} />
-                        <input type="text" name="name" placeholder="Name" onChange={this.handleChange} />
-                        <input type="text" name="password" placeholder="Password" onChange={this.handleChange} />
-                        <button type="submit">Submit</button>
-                    </form>
+                    <div className="login-form-container">
+                        <Grid centered className="login-form">
+                            <Grid.Column style={{ maxWidth: 550, marginTop: 20 }}>
+                                <LoginHeader>Sign Up!</LoginHeader>
+                                <Segment>
+                                    <Form onSubmit={this.createUser}>
+                                        <input type="text" name="email" placeholder="Email" onChange={this.handleChange} />
+                                        <input type="text" name="name" placeholder="Name" onChange={this.handleChange} />
+                                        <input type="text" name="password" placeholder="Password" onChange={this.handleChange} />
+                                        <Button fluid type="submit">Submit</Button>
+                                    </Form>
+                                </Segment>
+                            </Grid.Column>
+                        </Grid>
+                    </div>
                 </div>}
             </div>
-         );
+        );
     }
 }
- 
+
 export default SignUp;

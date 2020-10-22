@@ -17,8 +17,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "2rem",
     },
     appbarTitle: {
-        flexGrow: "1",
+        flexGrow: "1!important",
         fontFamily: 'Nunito',
+        color: "white"
     },
     appbarWrapper: {
         width: "80%",
@@ -37,12 +38,18 @@ export default function Header() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleLogout = () => {
+        window.location.reload();
+        return false;
+    }
+
     const classes = useStyles()
     return (
         <div>
             <AppBar className={classes.appbar} elevation={0}>
                 <Toolbar className={classes.appbarWrapper}>
-                    <h1 className={classes.appbarTitle}>Tab-Tracker</h1>
+                    <Link to="/"><h1 className={classes.appbarTitle}>Tab-Tracker</h1></Link>
                     <IconButton >
                         <DehazeIcon className={classes.icon} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}/>
                         <Menu
@@ -54,7 +61,7 @@ export default function Header() {
                         >
                             <MenuItem onClick={handleClose}><Link to="/login">Login</Link></MenuItem>
                             <MenuItem onClick={handleClose}><Link to="/signup">Sign Up</Link></MenuItem>
-                            <MenuItem onClick={handleClose}>Logout</MenuItem>
+                            <MenuItem onClick={handleLogout}>Logout</MenuItem>
                         </Menu>
                     </IconButton>
                 </Toolbar>

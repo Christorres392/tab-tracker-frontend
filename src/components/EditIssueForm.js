@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Form, Grid, Button, Header, Segment, Modal, Icon, TextArea } from 'semantic-ui-react'
 
-
 const issuesURL = "http://localhost:3000/issues"
 
-class IssueForm extends Component {
+class EditIssueForm extends Component {
 
     state = {
         
@@ -36,7 +35,7 @@ class IssueForm extends Component {
     
     handleSubmit = () => {
         fetch(issuesURL, {
-          method: "POST",
+          method: "UPDATE",
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -63,7 +62,7 @@ class IssueForm extends Component {
     render() {
         return (
             <Modal
-                trigger={<Button className="issue-button" onClick={this.props.editIssue}>+ Issue</Button>}
+                trigger={this.props.editIssue}
                 open={this.props.modalOpen}
                 onClose={this.handleClose}
                 basic
@@ -71,7 +70,7 @@ class IssueForm extends Component {
             >
                 <Header icon='add' content='Issue' />
                 <Modal.Content>
-                    <h3>What seems to be the issue?</h3>
+                    <h3>Edit Issue</h3>
                     <Form >
                         <h4>Issue Name</h4>
                         <input type="text" name="issue_name" placeholder="Issue Name" onChange={this.handleChange} />
@@ -96,4 +95,4 @@ class IssueForm extends Component {
     }
 }
 
-export default IssueForm;
+export default EditIssueForm;
