@@ -210,6 +210,10 @@
   background-color: rgba(22, 22, 22, 0.7);
 }
 
+.issue-card:hover {
+  cursor: pointer;
+}
+
 .login{
   min-height: 100vh;
   background-size: cover;
