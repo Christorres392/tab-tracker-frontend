@@ -8,7 +8,7 @@ const ReferenceCard = (props) => {
 
         <div>
             <div className="reference-card">
-                <h4 style={{color: "white"}}>{props.references.note}</h4>
+                <h3 style={{color: "white"}}>{props.references.note}</h3>
                 
                     <div className="tiny-link" onMouseEnter={() => props.referenceHover(props.references)}>
                         <ReactTinyLink
