@@ -53,19 +53,19 @@ class IssueForm extends Component {
         .then(res => res.json())
         .then(() => this.fetchIssues())
         this.props.newIssues(this.state)
-        this.handleClose()
+        this.handleModal()
             }
 
-    handleClose = () => {
-        this.setState({ modalOpen: false })         
+    handleModal = () => {
+        this.setState({ modalOpen: !this.state.modalOpen })         
     }
 
     render() {
         return (
             <Modal
-                trigger={<Button className="issue-button" onClick={this.props.editIssue}>+ Issue</Button>}
-                open={this.props.modalOpen}
-                onClose={this.handleClose}
+                trigger={<Button className="issue-button" onClick={this.handleModal}>+ Issue</Button>}
+                open={this.state.modalOpen}
+                onClose={this.handleModal}
                 basic
                 size='small'
             >

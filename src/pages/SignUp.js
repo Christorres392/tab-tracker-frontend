@@ -63,7 +63,7 @@ class SignUp extends Component {
                                     <Form onSubmit={this.createUser}>
                                         <input type="text" name="email" placeholder="Email" onChange={this.handleChange} />
                                         <input type="text" name="name" placeholder="Name" onChange={this.handleChange} />
-                                        <input type="text" name="password" placeholder="Password" onChange={this.handleChange} />
+                                        <input type="password" name="password" placeholder="Password" onChange={this.handleChange} />
                                         <Button fluid type="submit">Submit</Button>
                                     </Form>
                                 </Segment>

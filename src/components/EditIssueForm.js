@@ -13,7 +13,7 @@ class EditIssueForm extends Component {
         in_progress: true,
         project_id: this.props.project.id,
         issues: [],
-        modalOpen: false,
+        
     }
 
     fetchIssues = () => {
@@ -34,8 +34,8 @@ class EditIssueForm extends Component {
 
     
     handleSubmit = () => {
-        fetch(issuesURL, {
-          method: "UPDATE",
+        fetch(`${issuesURL}/${this.props.issueId}`, {
+          method: "PATCH",
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -50,21 +50,19 @@ class EditIssueForm extends Component {
           })
         })
         .then(res => res.json())
-        .then(() => this.fetchIssues())
-        this.props.newIssues(this.state)
-        this.handleClose()
-            }
+        .then(() => {      
+        this.props.fetchIssues()
+        this.props.changeIssue()
+        }) }
 
-    handleClose = () => {
-        this.setState({ modalOpen: false })         
-    }
+  
 
     render() {
         return (
             <Modal
-                trigger={this.props.editIssue}
+                // trigger={this.props.changeIssue}
                 open={this.props.modalOpen}
-                onClose={this.handleClose}
+                onClose={this.props.changeIssue}
                 basic
                 size='small'
             >

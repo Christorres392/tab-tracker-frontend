@@ -65,7 +65,7 @@ class Login extends Component {
                             <Segment>
                                 <Form onSubmit={this.login} >
                                     <input type="text" name="name" placeholder="Name" onChange={this.handleChange} />
-                                    <input /* type="password" */ type="text" name="password" placeholder="Password" onChange={this.handleChange} />
+                                    <input type="password" name="password" placeholder="Password" onChange={this.handleChange} />
                                     <Button fluid type="submit" >Submit</Button>
                                 </Form>
                             </Segment>

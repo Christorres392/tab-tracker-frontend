@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 const Reference = (props) => {
     return (
 
-        <div>
+        <div className="references-preview">
                 <div class="box">
-                    <object data={props.references.url} width="800" height="800" type="text/html"> </object>
+                    <object data={props.url} width="800" height="800" type="text/html"> </object>
                 </div>
             
         </div>

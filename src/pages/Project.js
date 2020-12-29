@@ -11,6 +11,7 @@ class Project extends Component {
     state = {
         issues: [],
         modalOpen: false,
+        issueId: ""
     }
 
     componentDidMount() {
@@ -43,8 +44,14 @@ class Project extends Component {
         })
     }
 
-    editIssue = (e) => {
-        console.log("hello")
+    editIssue = (issue) => {
+        
+        this.setState({modalOpen: !this.state.modalOpen, issueId: issue.id})
+
+    }
+
+    changeIssue = (e) => {
+        
         this.setState({modalOpen: !this.state.modalOpen})
     }
 
@@ -61,7 +68,7 @@ class Project extends Component {
                     <div>
                         <IssueForm project={this.props.project}  modalOpen={this.state.modalOpen} newIssues={this.projectHandler} />
                         <IssuesContainer deleteIssue={this.deleteIssue} editIssue={this.editIssue} showIssuePage={this.props.showIssuePage} issues={this.state.issues} />
-                        <EditIssueForm modalOpen={this.state.modalOpen} project={this.props.project}/>
+                        <EditIssueForm modalOpen={this.state.modalOpen} fetchIssues={this.fetchIssues} issueId={this.state.issueId} changeIssue={this.changeIssue} newIssues={this.projectHandler} project={this.props.project}/>
                     </div>
                 </div>
             </div>

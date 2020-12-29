@@ -23,25 +23,26 @@ const IssueCard = (props) => {
         if (props.in_progress === false) {
             setState({color: "green"})
         } else if (props.priority === "Low") {
-            setState({color: "green"})
+            setState({color: "yellow"})
         } else if (props.priority === "Medium") {
-            setState({color: "green"})
+            setState({color: "orange"})
         } else if (props.priority === "High") {
-            setState({color: "green"})
+            setState({color: "red"})
         }
 
     }
 
         return (
 
-            <div style={{ backgroundColor: state.color }}>
-                <div onClick={() => props.handleClick(props.issues)} className="issue-card">
+            <div >
+                <div onClick={() => props.handleClick(props.issues)} className="issue-card" style={{ backgroundColor: state.color}}>
                     <List>
                         <ListItem>
                             <ListItemText className="issue-card-title" primary={props.issues.issue_name} />
                             <ListItemSecondaryAction>
-                                <ToggleButton className="resolved-button" size="small" onClick={(e) => {
-                                    e.stopPropagation()
+                                {/* <ToggleButton className="resolved-button" size="small" onClick={(e) => {
+                                    e.stopPropagation();
+                                    setState({color: "green"})
 
                                 }}
 
@@ -53,11 +54,11 @@ const IssueCard = (props) => {
                                     }}
                                 >
                                     Resolved <CheckIcon />
-                                </ToggleButton>
+                                </ToggleButton> */}
 
                                 <EditOutlinedIcon className="issue-card-edit" onClick={(e) => {
                                     e.stopPropagation()
-                                    props.editIssue()
+                                    props.editIssue(props.issues)
                                 }} />
                                 <DeleteIcon className="issue-card-delete" onClick={(e) => {
                                     e.stopPropagation()
