@@ -275,3 +275,8 @@
 .resolved-button:hover {
   color: rgb(6, 201, 6) !important;
 }
+
+ /* font size for project card */
+.MuiTypography-body1 {
+  font-size: 1.5rem !important;
+}
