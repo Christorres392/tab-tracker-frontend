@@ -20,9 +20,9 @@ class App extends Component {
 
   state ={
     loggedInStatus: "LOGGED_OUT",
-    user: [],
-    project: [], 
-    issue: []
+    user: JSON.parse(localStorage.getItem("user")) || [],
+    project: JSON.parse(localStorage.getItem("project")) || [], 
+    issue: JSON.parse(localStorage.getItem("issue")) || []
   }
 
 
@@ -30,13 +30,21 @@ class App extends Component {
     this.setState({loggedInStatus: "LOGGED_IN", user: data.user})
   }
 
+  handleLogout = (data) => {
+    this.setState({loggedInStatus: "LOGGED_OUT", user: []})
+    localStorage.clear()
+    history.replace("/login")
+  }
+
   showProjectPage = (project) => {
    this.setState({project: project})
+   localStorage.setItem("project", JSON.stringify(project))
     history.push('/project')
   }
 
   showIssuePage = (issue) => {
     this.setState({issue: issue})
+    localStorage.setItem("issue", JSON.stringify(issue))
      history.push('/issue')
    }
 
@@ -49,7 +57,7 @@ class App extends Component {
       <div>
         
         <Router history={history}>
-        <Header/>
+        <Header handleLogout={this.handleLogout}/>
           <Switch>
             
             <Route exact path="/" render={props => (<Home {...props} showProjectPage={this.showProjectPage} currentUser={this.state.user}/>)}/>

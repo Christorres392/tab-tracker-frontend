@@ -42,6 +42,7 @@ class Login extends Component {
             .then(r => r.json())
             .then(response => {
                 localStorage.setItem("token", response.jwt)
+                localStorage.setItem("user", JSON.stringify(response.user))
                 //    console.log(response)
                 this.props.handleLogin(response)
                 this.props.history.push("/")

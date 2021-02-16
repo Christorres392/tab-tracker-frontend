@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Switch, Route, Link, useHistory } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import ProjectForm from '../components/ProjectForm'
 import ProjectsContainer from '../containers/ProjectsContainer'
 import { Button } from 'semantic-ui-react'
@@ -11,13 +11,20 @@ const projectsURL = "http://localhost:3000/projects"
 
 class Home extends Component {
 
-state = {
-    id: this.props.currentUser.id,
-    projects: [],
-}
 
+constructor(props) {
+    super(props)
+    this.token = localStorage.getItem("token")
+    this.state = {
+        id: props.currentUser.id,
+        projects: [],
+    }
+}
 componentDidMount(){
-    this.fetchProjects()
+    
+    if (this.token) {
+        this.fetchProjects()
+    }
 }
 
 projectHandler = (data) => {
@@ -27,7 +34,7 @@ projectHandler = (data) => {
 fetchProjects = () => {
     fetch(projectsURL, 
         {method:'GET',
-         headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
+         headers: {'Authorization': `Bearer ${this.token}`}
         })
     .then(res => res.json())
     .then(projects => this.setState({projects: projects.filter(project => project.user_id == this.props.currentUser.id)}))
@@ -49,6 +56,9 @@ deleteProject = (project) => {
 
     
     render() { 
+        if(!this.token) {
+            return <Redirect to="/login"/>
+        }
         return ( 
             <div id="home" className="homepage"  style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/desktop_1.jpeg'})` }}>
       

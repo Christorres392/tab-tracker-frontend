@@ -8,20 +8,27 @@ const referencesURL = "http://localhost:3000/references"
 
 class Issue extends Component {
     
+    constructor(props) {
+        super(props)
+        this.token = localStorage.getItem("token")
+        this.state = {
+            references: [],
+            url: ""
+        }
+    }
 
-state = {
-    references: [],
-    url: ""
-}
+
 
 componentDidMount() {
-    this.fetchReferences()
+    if (this.token) {
+        this.fetchReferences()
+    }
 }
 
 fetchReferences = () => {
     fetch(referencesURL, 
         {method:'GET',
-         headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
+         headers: {'Authorization': `Bearer ${this.token}`}
         })
     .then(res => res.json())
     .then(references => this.setState({references: references.filter(reference => reference.issue_id == this.props.issue.id)}))

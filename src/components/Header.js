@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         margin: "0 auto"
     }
 }));
-export default function Header() {
+export default function Header(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     
@@ -39,10 +39,6 @@ export default function Header() {
         setAnchorEl(null);
     };
 
-    const handleLogout = () => {
-        window.location.reload();
-        return false;
-    }
 
     const classes = useStyles()
     return (
@@ -61,7 +57,7 @@ export default function Header() {
                         >
                             <MenuItem onClick={handleClose}><Link to="/login">Login</Link></MenuItem>
                             <MenuItem onClick={handleClose}><Link to="/signup">Sign Up</Link></MenuItem>
-                            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                            <MenuItem onClick={props.handleLogout}>Logout</MenuItem>
                         </Menu>
                     </IconButton>
                 </Toolbar>

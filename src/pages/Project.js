@@ -63,7 +63,7 @@ class Project extends Component {
             <div className="project" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/desktop_5.jpeg'})` }}>
                 <div>
                     <div>
-                        <h1 className="project-name">{this.props.project.project_name}</h1>
+                        <h1 className="project-name">{this.props.project && this.props.project.project_name}</h1>
                     </div>
                     <div>
                         <IssueForm project={this.props.project}  modalOpen={this.state.modalOpen} newIssues={this.projectHandler} />
