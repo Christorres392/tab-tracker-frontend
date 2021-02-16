@@ -30,7 +30,7 @@ class SignUp extends Component {
             password: password
         }
 
-        fetch("http://localhost:3000/users", {
+        fetch("https://tab-tracker392.herokuapp.com/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -6,7 +6,7 @@ import { Button } from 'semantic-ui-react'
 import Header from '../components/Header';
 
 
-const projectsURL = "http://localhost:3000/projects"
+const projectsURL = "https://tab-tracker392.herokuapp.com/projects"
 
 
 class Home extends Component {
@@ -42,7 +42,7 @@ fetchProjects = () => {
 
 deleteProject = (project) => {
     this.setState({ projects: this.state.projects.filter(newProject => newProject.id !== project.id) })
-    fetch(`http://localhost:3000/projects/${project.id}`, {
+    fetch(`https://tab-tracker392.herokuapp.com/projects/${project.id}`, {
       method: "DELETE", 
       headers: {
         'Authorization': `Bearer ${localStorage.getItem("token")}`,

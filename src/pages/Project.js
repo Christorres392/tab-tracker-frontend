@@ -4,7 +4,7 @@ import IssueForm from '../components/IssueForm'
 import IssuesContainer from '../containers/IssuesContainer';
 
 
-const issuesURL = "http://localhost:3000/issues"
+const issuesURL = "https://tab-tracker392.herokuapp.com/ssues"
 
 class Project extends Component {
 
@@ -34,7 +34,7 @@ class Project extends Component {
 
     deleteIssue = (issue) => {
         this.setState({ issues: this.state.issues.filter(newIssue => newIssue.id !== issue.id) })
-        fetch(`http://localhost:3000/issues/${issue.id}`, {
+        fetch(`https://tab-tracker392.herokuapp.com/${issue.id}`, {
             method: "DELETE",
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem("token")}`,

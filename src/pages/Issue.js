@@ -4,7 +4,7 @@ import ReferenceForm from '../components/ReferenceForm';
 import ReferencesContainer from '../containers/ReferencesContainer';
 import ReferenceUrlContainer from '../containers/ReferenceUrlContainer';
 
-const referencesURL = "http://localhost:3000/references"
+const referencesURL = "https://tab-tracker392.herokuapp.com/references"
 
 class Issue extends Component {
     

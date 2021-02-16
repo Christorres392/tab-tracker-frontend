@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Grid, Button, Header, Segment, Modal, Icon, TextArea } from 'semantic-ui-react'
 
-const issuesURL = "http://localhost:3000/issues"
+const issuesURL = "https://tab-tracker392.herokuapp.com/issues"
 
 class EditIssueForm extends Component {
 

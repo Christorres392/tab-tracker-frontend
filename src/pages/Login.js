@@ -31,7 +31,7 @@ class Login extends Component {
 
         const user = { name, password }
 
-        fetch("http://localhost:3000/login", {
+        fetch("https://tab-tracker392.herokuapp.com/login", {
             method: "POST",
             headers: {
                 "Accept": "application/json",

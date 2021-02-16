@@ -3,7 +3,7 @@ import { Form, Grid, Button, Header, Segment, Modal, Icon } from 'semantic-ui-re
 
 
 
-const projectsURL = "http://localhost:3000/projects"
+const projectsURL = "https://tab-tracker392.herokuapp.com/projects"
 
 class ProjectForm extends Component {
 
@@ -39,7 +39,7 @@ class ProjectForm extends Component {
     }
 
     handleSubmit = () => {
-        fetch("http://localhost:3000/projects", {
+        fetch("https://tab-tracker392.herokuapp.com/projects", {
           method: "POST",
           headers: {
             'Accept': 'application/json',
