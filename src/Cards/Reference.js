@@ -5,7 +5,7 @@ const Reference = (props) => {
 
         <div className="references-preview">
                 <div class="box">
-                    <object data={props.url} width="800" height="800" type="text/html"> </object>
+                    <object data={props.url} width="640" height="800" type="text/html"> </object>
                 </div>
             
         </div>
