@@ -4,7 +4,7 @@ import IssueForm from '../components/IssueForm'
 import IssuesContainer from '../containers/IssuesContainer';
 
 
-const issuesURL = "https://tab-tracker392.herokuapp.com/ssues"
+const issuesURL = "https://tab-tracker392.herokuapp.com/issues"
 
 class Project extends Component {
 
